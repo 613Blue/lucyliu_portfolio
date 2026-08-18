@@ -58,22 +58,19 @@ p {
 
 
 /* =========================================
-   NAV
+NAV
 ========================================= */
 
 .nav {
-
     position: fixed;
 
     top: 0;
     left: 0;
 
     width: 100%;
-
     height: 64px;
 
-    padding:
-        0 28px;
+    padding: 0 28px;
 
     display: grid;
 
@@ -89,10 +86,10 @@ p {
     font-size: 12px;
 
     mix-blend-mode: difference;
-
 }
 
 .logo {
+    justify-self: start;
 
     width: 28px;
     height: 28px;
@@ -109,17 +106,52 @@ p {
     font-size: 9px;
 
     letter-spacing: -0.05em;
-
 }
 
 .nav-center {
     justify-self: center;
 }
 
-.nav-link {
+.nav-right {
     justify-self: end;
+
+    display: flex;
+    align-items: center;
+
+    gap: 28px;
 }
 
+.language-switch {
+    display: flex;
+    align-items: center;
+
+    gap: 5px;
+
+    font-size: 10px;
+
+    letter-spacing: 0.08em;
+}
+
+.lang-btn {
+    background: none;
+    border: none;
+
+    padding: 0;
+
+    color: #666;
+
+    font: inherit;
+
+    cursor: pointer;
+}
+
+.lang-btn.active {
+    color: white;
+}
+
+.lang-divider {
+    color: #444;
+}
 
 /* =========================================
    GENERAL
@@ -159,7 +191,7 @@ main {
 
 
 /* =========================================
-   HERO
+HERO
 ========================================= */
 
 .hero {
@@ -189,11 +221,13 @@ main {
     top: 95px;
     left: 6vw;
 
-    font-size: 10px;
+    font-size: 9px;
 
     letter-spacing: 0.14em;
 
     color: #666;
+
+    z-index: 6;
 }
 
 
@@ -212,27 +246,29 @@ main {
 }
 
 
-/* huge title */
+/* =========================================
+   TITLE — BEHIND PHOTO
+========================================= */
 
 .hero-title {
     position: relative;
 
-    z-index: 3;
+    z-index: 2;
 
     width: 78%;
 }
 
+
 .hero-title h1 {
-    font-size:
-        clamp(
-            78px,
-            11vw,
-            175px
-        );
+    font-size: clamp(
+        70px,
+        10vw,
+        170px
+    );
 
-    line-height: 0.84;
+    line-height: 0.9;
 
-    letter-spacing: -0.075em;
+    letter-spacing: -0.07em;
 
     font-weight: 700;
 
@@ -240,25 +276,27 @@ main {
 }
 
 
-/* photo */
+/* =========================================
+   PHOTO — ABOVE TITLE
+========================================= */
 
 .hero-photo-wrap {
     position: absolute;
 
-    right: 8%;
-    top: 48%;
+    right: 30%;
+    top: 60%;
 
     transform:
         translateY(-50%);
 
     width:
         clamp(
-            220px,
+            250px,
             28vw,
-            430px
+            450px
         );
 
-    z-index: 2;
+    z-index: 3;
 }
 
 
@@ -286,13 +324,13 @@ main {
 
     color: #555;
 
-    font-size: 10px;
+    font-size: 9px;
 
     letter-spacing: 0.2em;
 }
 
 
-/* real photo later */
+/* real photo */
 
 .hero-photo {
     display: block;
@@ -302,44 +340,53 @@ main {
 
     object-fit: contain;
 
-    filter: grayscale(100%);
+    filter:
+        saturate(45%)
+        brightness(0.9)
+        contrast(0.96);
 
-    opacity: 0.95;
+    opacity: 0.96;
 }
 
 
-/* role crosses the title / photo */
+/* =========================================
+   ROLE — FRONT LAYER
+========================================= */
 
 .hero-role {
     position: absolute;
 
-    left: 49%;
+    left: 65%;
     bottom: 5%;
 
     z-index: 5;
 
-    font-size:
-        clamp(
-            18px,
-            2vw,
-            30px
-        );
+    font-size: 30px;
 
-    letter-spacing: 0.02em;
+    line-height: 1.4;
+
+    letter-spacing: 0.15em;
 
     white-space: nowrap;
+
+    color: var(--cyan);
 }
 
-.role-cn {
-    display: inline;
+
+/* language default */
+
+.lang-cn {
+    display: initial;
 }
 
-.role-en {
+.lang-en {
     display: none;
 }
 
 
-/* lower introduction */
+/* =========================================
+   LOWER INTRODUCTION
+========================================= */
 
 .hero-bottom {
     display: grid;
@@ -352,9 +399,13 @@ main {
 
     align-items: end;
 
-    margin-top: 20px;
+    /*
+    原来是 20px
+    改成负值，让整块文字往上
+    */
+    margin-top: -35px;
 
-    padding-top: 30px;
+    padding-top: 24px;
 
     border-top:
         1px solid rgba(255,255,255,0.14);
@@ -367,46 +418,43 @@ main {
 
 
 .hero-statement p {
-    font-size:
-        clamp(
-            20px,
-            2.3vw,
-            34px
-        );
+    font-size: 13px;
 
-    line-height: 1.25;
+    line-height: 1.6;
 
-    letter-spacing: -0.025em;
+    letter-spacing: 0;
 
     color: var(--white);
 }
 
 
 .hero-description {
-    max-width: 520px;
+    position: absolute;
 
-    justify-self: end;
+    top: 160px;
+    right: 6vw;
+
+    width: 430px;
+    max-width: 430px;
+
+    z-index: 6;
 }
-
+.hero {
+    position: relative;
+}
 
 .hero-description p {
     font-size: 13px;
 
-    line-height: 1.75;
+    line-height: 1.6;
 
     color: #8e8e88;
 }
 
 
-/* bilingual default */
-
-.statement-en,
-.description-en {
-    display: none;
-}
-
-
-/* tags */
+/* =========================================
+   TAGS
+========================================= */
 
 .hero-tags {
     display: flex;
@@ -415,7 +463,7 @@ main {
 
     flex-wrap: wrap;
 
-    margin-top: 35px;
+    margin-top: 28px;
 }
 
 
@@ -428,7 +476,9 @@ main {
 }
 
 
-/* scroll */
+/* =========================================
+   SCROLL
+========================================= */
 
 .scroll-note {
     position: absolute;
@@ -576,11 +626,42 @@ main {
 ========================================= */
 
 .thinking-section {
+    position: relative;
+    overflow: hidden;
 
     padding-top: 180px;
     padding-bottom: 180px;
-
 }
+.thinking-section::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+        url("images/system.png");
+
+    background-repeat: no-repeat;
+
+    background-position:
+        center 20% 15%;
+
+    background-size:
+        40% auto;
+
+    opacity: 0.35;
+
+    z-index: 0;
+
+    pointer-events: none;
+}
+.thinking-section > * {
+    position: relative;
+
+    z-index: 2;
+}
+
 
 .large-statement {
 
@@ -616,7 +697,22 @@ main {
     letter-spacing: -0.065em;
 
 }
+.large-statement .lang-cn p {
+    font-size: 18px;
+    line-height: 1.5;
+    letter-spacing: 0.08em;
 
+    font-family:
+        "PingFang SC",
+        "Microsoft YaHei",
+        sans-serif;
+}
+
+.large-statement .lang-cn h2 {
+    font-size: clamp(55px, 8vw, 120px) !important;
+    line-height: 1.15;
+    letter-spacing: 0.04em;
+}
 
 .thinking-flow {
 
@@ -735,481 +831,1606 @@ main {
 
 }
 
-
 /* =========================================
-   PROCESS
+   SYSTEM THINKING MAP
 ========================================= */
 
-.process-section {
+.system-thinking-block {
+    margin-top: 150px;
 
-    padding-top: 180px;
-    padding-bottom: 180px;
-
-}
-
-.process-header {
-
-    display: grid;
-
-    grid-template-columns:
-        1fr
-        0.7fr;
-
-    gap: 80px;
-
-    padding-top: 100px;
-
-    margin-bottom: 120px;
-
-}
-
-.process-header h2 {
-
-    font-size:
-        clamp(
-            50px,
-            7vw,
-            100px
-        );
-
-    line-height: 0.95;
-
-    letter-spacing: -0.06em;
-
-}
-
-.process-header p {
-
-    max-width: 380px;
-
-    align-self: end;
-
-    font-size: 14px;
-
-}
-
-.process-list {
+    padding-top: 50px;
 
     border-top:
         1px solid var(--border);
-
 }
 
-.process-row {
 
+/* HEADER */
+
+.system-thinking-header {
     display: grid;
 
     grid-template-columns:
-        70px
-        1fr
-        1fr;
+        0.6fr
+        1.4fr;
 
-    padding:
-        30px 0;
+    gap: 80px;
 
-    border-bottom:
-        1px solid var(--border);
+    align-items: start;
 
-    align-items: center;
-
+    margin-bottom: 100px;
 }
 
-.process-index {
 
-    color: var(--cyan);
-
+.system-eyebrow {
     font-size: 10px;
 
+    letter-spacing: 0.14em;
+
+    color: var(--cyan);
 }
 
-.process-name {
 
-    font-size: 18px;
+.system-thinking-header h3 {
+    font-size:
+        clamp(
+            30px,
+            4vw,
+            58px
+        );
 
-    letter-spacing: 0.03em;
+    line-height: 1;
 
+    letter-spacing: -0.04em;
+
+    font-weight: 500;
+
+    max-width: none;
+
+    white-space: nowrap;
 }
 
-.process-detail {
 
-    color: #777;
+/* Chinese heading */
 
-    font-size: 12px;
+.system-thinking-header .lang-cn h3 {
+    font-family:
+        "PingFang SC",
+        "Microsoft YaHei",
+        sans-serif;
 
+    letter-spacing: 0.02em;
+
+    line-height: 1.15;
+}
+
+
+
+/* =========================================
+   MAP
+========================================= */
+
+.system-map {
+    position: relative;
+
+    width: 100%;
+
+    height: 720px;
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+}
+
+
+/* lines */
+
+.map-line {
+    position: absolute;
+
+    background:
+        rgba(255,255,255,0.16);
+
+    z-index: 0;
+}
+
+
+.line-horizontal {
+    width: 66%;
+    height: 1px;
+
+    left: 17%;
+    top: 45%;
+}
+
+
+.line-vertical {
+    width: 1px;
+    height: 62%;
+
+    left: 50%;
+    top: 14%;
 }
 
 
 /* =========================================
-   WHAT I CREATE
+   EXPERIENCE CORE
 ========================================= */
 
-.create-section {
+.experience-core {
+    position: absolute;
 
-    padding-top: 180px;
-    padding-bottom: 180px;
+    left: 50%;
+    top: 45%;
 
-}
+    transform:
+        translate(-50%, -50%);
 
-.create-title {
-
-    padding-top: 110px;
-
-    margin-left: 15%;
-
-}
-
-.create-title p {
-
-    color: var(--cyan);
-
-    font-size: 18px;
-
-}
-
-.create-title h2 {
-
-    font-size:
-        clamp(
-            55px,
-            8vw,
-            120px
-        );
-
-    line-height: 0.95;
-
-    letter-spacing: -0.06em;
-
-}
-
-.medium-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(2, 1fr);
-
-    gap: 1px;
-
-    background: #333;
-
-    margin-top: 140px;
+    width: 180px;
+    height: 180px;
 
     border:
-        1px solid #333;
+        1px solid var(--cyan);
 
-}
-
-.medium-card {
+    border-radius: 50%;
 
     background: var(--bg);
-
-    min-height: 300px;
-
-    padding: 35px;
 
     display: flex;
 
     flex-direction: column;
 
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
 
+    text-align: center;
+
+    z-index: 3;
+
+    box-shadow:
+        0 0 60px
+        rgba(93,214,208,0.08);
 }
 
-.medium-card.large {
 
-    min-height: 400px;
+.experience-core strong {
+    font-size: 18px;
 
+    letter-spacing: 0.08em;
+
+    font-weight: 500;
+
+    color: var(--white);
 }
 
-.medium-number {
 
-    color: var(--yellow);
+.core-small {
+    font-size: 8px;
 
+    letter-spacing: 0.15em;
+
+    color: var(--cyan);
+
+    margin-bottom: 10px;
+}
+
+
+
+/* =========================================
+   NODES
+========================================= */
+
+.system-node {
+    position: absolute;
+
+    z-index: 2;
+
+    min-width: 210px;
+
+    cursor: pointer;
+}
+
+
+.node-content {
+    position: relative;
+
+    padding:
+        18px 20px;
+
+    border:
+        1px solid #292929;
+
+    background:
+        rgba(5,5,5,0.94);
+
+    transition:
+        border-color 0.3s ease,
+        transform 0.3s ease,
+        background 0.3s ease;
+}
+
+
+.node-index {
+    display: block;
+
+    font-size: 8px;
+
+    color: #555;
+
+    margin-bottom: 18px;
+}
+
+
+.system-node h4 {
+    font-size: 18px;
+
+    font-weight: 500;
+
+    letter-spacing: 0.05em;
+
+    color: var(--white);
+
+    margin-bottom: 7px;
+}
+
+
+.system-node p {
     font-size: 10px;
 
+    color: #696969;
+
+    line-height: 1.5;
 }
 
-.medium-card h3 {
 
-    font-size:
-        clamp(
-            30px,
-            4vw,
-            55px
-        );
 
-    line-height: 0.95;
+/* Chinese */
 
-    max-width: 400px;
+.system-node .lang-cn h4 {
+    font-family:
+        "PingFang SC",
+        "Microsoft YaHei",
+        sans-serif;
 
-    letter-spacing: -0.04em;
-
+    letter-spacing: 0.08em;
 }
 
-.medium-card p {
 
-    max-width: 300px;
+.system-node .lang-cn p {
+    font-family:
+        "PingFang SC",
+        "Microsoft YaHei",
+        sans-serif;
+
+    letter-spacing: 0.04em;
+}
+
+
+
+/* =========================================
+   NODE POSITIONS
+========================================= */
+
+.node-technology {
+    top: 0;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+}
+
+
+.node-user {
+    left: 0;
+
+    top: 45%;
+
+    transform:
+        translateY(-50%);
+}
+
+
+.node-service {
+    right: 0;
+
+    top: 45%;
+
+    transform:
+        translateY(-50%);
+}
+
+
+.node-system {
+    left: 50%;
+
+    bottom: 70px;
+
+    transform:
+        translateX(-50%);
+}
+
+
+.node-value {
+    left: 0;
+
+    bottom: 0;
+}
+
+
+
+/* =========================================
+   HOVER DETAILS
+========================================= */
+.node-detail {
+    position: absolute;
+
+    width: 280px;
+
+    padding:
+        18px 20px;
+
+    background: #111;
+
+    border:
+        1px solid #333;
 
     font-size: 12px;
 
+    line-height: 1.65;
+
+    color: #aaa;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform:
+        translateY(8px);
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease,
+        visibility 0.25s ease;
+
+    pointer-events: none;
+
+    z-index: 20;
+}
+
+
+.system-node:hover {
+    z-index: 10;
+}
+
+
+.system-node:hover
+.node-content {
+    border-color:
+        var(--cyan);
+
+    background:
+        #0b0b0b;
+
+    transform:
+        translateY(-3px);
+}
+
+
+.system-node:hover
+.node-index {
+    color:
+        var(--cyan);
+}
+
+
+.system-node:hover
+.node-detail {
+    opacity: 1;
+
+    visibility: visible;
+
+    transform:
+        translateY(0);
+}
+
+
+
+/* detail positions */
+
+.node-technology .node-detail {
+    top: calc(100% + 15px);
+
+    left: 50%;
+
+    transform:
+        translate(-50%, 8px);
+}
+
+
+.node-technology:hover
+.node-detail {
+    transform:
+        translate(-50%, 0);
+}
+
+
+.node-user .node-detail {
+    left: calc(100% + 15px);
+
+    top: 0;
+}
+
+
+.node-service .node-detail {
+    right: calc(100% + 15px);
+
+    top: 0;
+}
+
+
+.node-system .node-detail {
+    bottom: calc(100% + 15px);
+
+    left: 50%;
+
+    transform:
+        translate(-50%, 8px);
+}
+
+
+.node-system:hover
+.node-detail {
+    transform:
+        translate(-50%, 0);
+}
+
+
+.node-value .node-detail {
+    left: calc(100% + 15px);
+
+    bottom: 0;
+}
+
+.system-node.active
+.node-content {
+    border-color:
+        var(--cyan);
+
+    background:
+        #0b0b0b;
+}
+
+
+.system-node.active
+.node-index {
+    color:
+        var(--cyan);
+}
+
+
+.system-node.active
+.node-detail {
+    opacity: 1;
+
+    visibility: visible;
+}
+
+/* =========================================
+   HINT
+========================================= */
+
+.system-hint {
+    margin-top: 15px;
+
+    text-align: center;
+
+    font-size: 8px;
+
+    letter-spacing: 0.14em;
+
+    color: #555;
+}
+/* =========================================
+   HOW I DESIGN
+========================================= */
+
+.process-section {
+    padding-top: 180px;
+    padding-bottom: 200px;
 }
 
 
 /* =========================================
-   PROJECTS
+   HEADER
 ========================================= */
 
-.projects-section {
-
-    padding-top: 180px;
-    padding-bottom: 100px;
-
-}
-
-.projects-intro {
-
-    padding-top: 110px;
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: end;
-
-    margin-bottom: 100px;
-
-}
-
-.projects-intro h2 {
-
-    font-size:
-        clamp(
-            60px,
-            8vw,
-            120px
-        );
-
-    line-height: 0.9;
-
-    letter-spacing: -0.06em;
-
-}
-
-.projects-intro p {
-
-    width: 300px;
-
-    font-size: 13px;
-
-}
-
-
-/* PROJECT */
-
-.project-card {
-
-    border-top:
-        1px solid var(--border);
-
-    padding:
-        25px 0
-        100px;
-
-}
-
-.project-meta {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    color: #666;
-
-    font-size: 9px;
-
-    letter-spacing: 0.1em;
-
-    margin-bottom: 60px;
-
-}
-
-.project-content {
+.process-header-new {
+    padding-top: 100px;
 
     display: grid;
 
     grid-template-columns:
-        0.75fr
-        1.25fr;
+        1.35fr
+        0.65fr;
 
-    gap: 80px;
+    gap: 100px;
 
-    align-items: center;
+    align-items: end;
 
+    margin-bottom: 130px;
 }
 
-.project-content.reverse {
 
-    grid-template-columns:
-        1.25fr
-        0.75fr;
+.process-eyebrow {
+    font-size: 11px;
 
-}
-
-.project-content.reverse
-.project-info {
-
-    order: 2;
-
-}
-
-.project-content.reverse
-.project-visual {
-
-    order: 1;
-
-}
-
-.project-info {
-
-    max-width: 470px;
-
-}
-
-.project-year {
+    letter-spacing: 0.14em;
 
     color: var(--cyan);
 
-    font-size: 11px;
-
-    margin-bottom: 20px;
-
+    margin-bottom: 25px;
 }
 
-.project-info h3 {
 
+.process-header-new h2 {
     font-size:
         clamp(
-            40px,
-            5vw,
-            75px
+            50px,
+            6.5vw,
+            95px
         );
 
     line-height: 0.95;
 
     letter-spacing: -0.055em;
 
-    margin-bottom: 30px;
-
+    max-width: 900px;
 }
 
-.project-info > p {
 
-    font-size: 14px;
+/* Chinese */
 
-    margin-bottom: 30px;
+.process-header-new .lang-cn h2 {
+    font-family:
+        "PingFang SC",
+        "Microsoft YaHei",
+        sans-serif;
 
+    letter-spacing: 0.02em;
+
+    line-height: 1.1;
 }
 
-.project-tags {
 
+.process-intro {
+    max-width: 420px;
+
+    justify-self: end;
+}
+
+
+.process-intro p {
+    font-size: 13px;
+
+    line-height: 1.75;
+
+    color: #888;
+}
+
+
+
+/* =========================================
+   MAIN LAYOUT
+========================================= */
+
+.design-process-layout {
+    display: grid;
+
+    grid-template-columns:
+        0.75fr
+        1.25fr;
+
+    gap: 70px;
+
+    align-items: start;
+
+    min-height: 820px;
+}
+
+
+
+/* =========================================
+   LEFT PROCESS
+========================================= */
+
+.design-process-nav {
+    position: relative;
+
+    z-index: 10;
+
+    border-top:
+        1px solid var(--border);
+}
+
+
+.design-step {
+    display: grid;
+
+    grid-template-columns:
+        55px
+        1fr;
+
+    gap: 10px;
+
+    padding:
+        28px 0;
+
+    border-bottom:
+        1px solid var(--border);
+
+    cursor: pointer;
+
+    opacity: 0.42;
+
+    transition:
+        opacity 0.3s ease,
+        padding-left 0.3s ease;
+}
+
+
+.design-step:hover,
+.design-step.active {
+    opacity: 1;
+
+    padding-left: 8px;
+}
+
+
+.design-step-number {
+    font-size: 9px;
+
+    letter-spacing: 0.1em;
+
+    color: #666;
+
+    padding-top: 5px;
+
+    transition:
+        color 0.3s ease;
+}
+
+
+.design-step:hover
+.design-step-number,
+.design-step.active
+.design-step-number {
+    color: var(--cyan);
+}
+
+
+.design-step h3 {
+    font-size:
+        clamp(
+            24px,
+            2.6vw,
+            38px
+        );
+
+    line-height: 1;
+
+    font-weight: 500;
+
+    letter-spacing: -0.035em;
+
+    margin-bottom: 12px;
+
+    color: var(--white);
+}
+
+
+.design-step .lang-cn h3 {
+    font-family:
+        "PingFang SC",
+        "Microsoft YaHei",
+        sans-serif;
+
+    letter-spacing: 0.03em;
+}
+
+
+.design-step-summary {
+    font-size: 12px;
+
+    line-height: 1.55;
+
+    color: #aaa;
+
+    max-width: 360px;
+
+    margin-bottom: 13px;
+}
+
+
+.design-step-tags {
+    max-width: 390px;
+
+    font-size: 9px;
+
+    line-height: 1.7;
+
+    letter-spacing: 0.04em;
+
+    color: #555;
+
+    transition:
+        color 0.3s ease;
+}
+
+
+.design-step:hover
+.design-step-tags,
+.design-step.active
+.design-step-tags {
+    color: #777;
+}
+
+
+
+/* =========================================
+   RIGHT EVIDENCE FIELD
+========================================= */
+
+.design-evidence {
+    position: relative;
+
+    min-height: 820px;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,255,255,0.025),
+            transparent 65%
+        );
+}
+
+
+
+/* =========================================
+   ALL IMAGES
+========================================= */
+
+.evidence-image {
+    position: absolute;
+
+    display: block;
+
+    object-fit: cover;
+
+    border:
+        1px solid rgba(255,255,255,0.15);
+
+    box-shadow:
+        0 15px 50px
+        rgba(0,0,0,0.35);
+
+    filter:
+        grayscale(65%)
+        brightness(0.38);
+
+    opacity: 0.28;
+
+    transform-origin: center;
+
+    transition:
+        opacity 0.4s ease,
+        filter 0.4s ease,
+        transform 0.4s ease,
+        border-color 0.4s ease;
+
+    z-index: 1;
+}
+
+
+
+/* ACTIVE GROUP */
+
+.evidence-image.is-active {
+    opacity: 1;
+
+    filter:
+        grayscale(0%)
+        brightness(1);
+
+    border-color:
+        rgba(93,214,208,0.55);
+
+    z-index: 20;
+}
+
+
+
+/* =========================================
+   UNDERSTAND
+========================================= */
+
+.evidence-u1 {
+    width: 41%;
+
+    left: 7%;
+    top: 8%;
+
+    transform:
+        rotate(-4deg);
+}
+
+
+.evidence-u2 {
+    width: 44%;
+
+    right: 7%;
+    top: 22%;
+
+    transform:
+        rotate(3deg);
+}
+
+
+.evidence-u3 {
+    width: 38%;
+
+    left: 24%;
+    top: 51%;
+
+    transform:
+        rotate(-1deg);
+}
+
+
+
+/* =========================================
+   STRUCTURE
+========================================= */
+
+.evidence-s1 {
+    width: 53%;
+
+    left: 5%;
+    top: 26%;
+
+    transform:
+        rotate(2deg);
+}
+
+
+.evidence-s2 {
+    width: 58%;
+
+    right: 4%;
+    top: 7%;
+
+    transform:
+        rotate(-2deg);
+}
+
+
+.evidence-s3 {
+    width: 42%;
+
+    right: 13%;
+    bottom: 8%;
+
+    transform:
+        rotate(3deg);
+}
+
+
+
+/* =========================================
+   CRAFT
+========================================= */
+
+.evidence-c1 {
+    width: 30%;
+
+    left: 10%;
+    top: 15%;
+
+    transform:
+        rotate(-5deg);
+}
+
+
+.evidence-c2 {
+    width: 31%;
+
+    left: 37%;
+    top: 29%;
+
+    transform:
+        rotate(1deg);
+}
+
+
+.evidence-c3 {
+    width: 34%;
+
+    right: 7%;
+    bottom: 14%;
+
+    transform:
+        rotate(4deg);
+}
+
+
+
+/* =========================================
+   EXPERIENCE
+========================================= */
+
+.evidence-e1 {
+    width: 47%;
+
+    left: 5%;
+    bottom: 7%;
+
+    transform:
+        rotate(-3deg);
+}
+
+
+.evidence-e2 {
+    width: 43%;
+
+    right: 7%;
+    top: 9%;
+
+    transform:
+        rotate(3deg);
+}
+
+
+.evidence-e3 {
+    width: 48%;
+
+    left: 28%;
+    top: 28%;
+
+    transform:
+        rotate(0deg);
+}
+
+
+
+/* =========================================
+   ACTIVE IMAGE MOTION
+========================================= */
+
+.evidence-u1.is-active,
+.evidence-s1.is-active,
+.evidence-c1.is-active,
+.evidence-e1.is-active {
+    transform:
+        rotate(-2deg)
+        scale(1.04);
+}
+
+
+.evidence-u2.is-active,
+.evidence-s2.is-active,
+.evidence-c2.is-active,
+.evidence-e2.is-active {
+    transform:
+        rotate(1deg)
+        scale(1.04);
+}
+
+
+.evidence-u3.is-active,
+.evidence-s3.is-active,
+.evidence-c3.is-active,
+.evidence-e3.is-active {
+    transform:
+        rotate(0deg)
+        scale(1.05);
+}
+
+
+
+/* =========================================
+   HINT
+========================================= */
+
+.evidence-hint {
+    position: absolute;
+
+    right: 20px;
+    bottom: 18px;
+
+    z-index: 50;
+
+    font-size: 8px;
+
+    letter-spacing: 0.14em;
+
+    color: #555;
+}
+
+/* =========================================
+   WHAT I CREATE
+========================================= */
+
+/* =========================================
+   WHAT I CREATE / SELECTED WORK
+========================================= */
+
+.projects-section {
+    padding-top: 180px;
+    padding-bottom: 180px;
+
+    min-height: 100vh;
+}
+
+
+
+/* =========================================
+   SECTION INTRO
+========================================= */
+
+/* WHAT I CREATE uses the same large-statement layout as HOW I THINK,
+   but the project intro title is intentionally one size smaller. */
+.project-statement {
+    margin-bottom: 120px;
+}
+
+.project-statement h2 {
+    font-size: clamp(48px, 6.5vw, 100px) !important;
+}
+
+.project-statement .lang-cn h2 {
+    font-size: clamp(48px, 6.5vw, 100px) !important;
+    line-height: 1.15;
+    letter-spacing: 0.04em;
+}
+
+.project-deck-intro {
+    padding-top: 100px;
+
+    margin-bottom: 120px;
+}
+
+
+.project-deck-eyebrow {
+    font-size: 11px;
+
+    letter-spacing: 0.14em;
+
+    color: var(--cyan);
+
+    margin-bottom: 25px;
+}
+
+
+.project-deck-intro h2 {
+    font-size:
+        clamp(
+            50px,
+            7vw,
+            105px
+        );
+
+    line-height: 0.92;
+
+    letter-spacing: -0.06em;
+
+    font-weight: 600;
+
+    max-width: 1000px;
+}
+
+
+/* Chinese */
+
+.project-deck-intro .lang-cn h2 {
+    font-family:
+        "PingFang SC",
+        "Microsoft YaHei",
+        sans-serif;
+
+    letter-spacing: 0.02em;
+
+    line-height: 1.08;
+}
+
+
+
+/* =========================================
+   PROJECT DECK
+========================================= */
+
+.project-deck {
+    position: relative;
+
+    width: 100%;
+
+    min-height: 1050px;
+}
+
+
+
+/* =========================================
+   PROJECT SHEET
+========================================= */
+
+.portfolio-sheet {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transform:
+        translateY(30px);
+
+    transition:
+        opacity 0.45s ease,
+        transform 0.45s ease,
+        visibility 0.45s ease;
+}
+
+
+.portfolio-sheet.active {
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transform:
+        translateY(0);
+}
+
+
+
+/* =========================================
+   INFO
+========================================= */
+
+.sheet-info {
+    position: relative;
+
+    z-index: 5;
+
+    margin-bottom: 55px;
+
+    max-width: 1100px;
+}
+
+
+.sheet-year {
+    font-size: 22px;
+
+    line-height: 1;
+
+    font-weight: 500;
+
+    color: var(--cyan);
+
+    margin-bottom: 32px;
+}
+
+
+
+/* TITLE */
+
+.sheet-info h2 {
+    font-size:
+        clamp(
+            54px,
+            6.5vw,
+            95px
+        );
+
+    line-height: 0.86;
+
+    letter-spacing: -0.07em;
+
+    font-weight: 700;
+
+    color: var(--white);
+
+    margin-bottom: 48px;
+}
+
+
+
+/* Chinese titles */
+
+.sheet-info .lang-cn h2 {
+    font-family:
+        "PingFang SC",
+        "Microsoft YaHei",
+        sans-serif;
+
+    line-height: 0.98;
+
+    letter-spacing: -0.02em;
+}
+
+
+
+/* DESCRIPTION */
+
+.sheet-description {
+    max-width: 880px;
+
+    font-size: 18px;
+
+    line-height: 1.55;
+
+    color: #aaa;
+
+    margin-bottom: 34px;
+}
+
+
+
+/* =========================================
+   TAGS
+========================================= */
+
+.sheet-tags {
     display: flex;
 
     flex-wrap: wrap;
 
-    gap: 6px;
-
+    gap: 10px;
 }
 
-.project-tags span {
 
-    font-size: 9px;
-
-    color: #888;
+.sheet-tags span {
+    padding:
+        8px 18px;
 
     border:
         1px solid #333;
 
-    padding:
-        6px 9px;
+    border-radius: 999px;
 
-    border-radius: 50px;
+    font-size: 11px;
 
+    line-height: 1;
+
+    color: #888;
+
+    transition:
+        border-color 0.25s ease,
+        color 0.25s ease;
 }
 
 
-/* PROJECT VISUAL */
+.sheet-tags span:hover {
+    border-color:
+        var(--cyan);
 
-.project-visual {
+    color:
+        var(--white);
+}
 
-    aspect-ratio: 1.45;
 
-    border-radius: 4px;
 
-    background:
-        linear-gradient(
-            135deg,
-            #1e1e1d,
-            #0c0c0c
-        );
+/* =========================================
+   PROJECT COVER
+========================================= */
 
-    border:
-        1px solid #2a2a29;
+.sheet-cover {
+    position: relative;
 
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    color: #555;
-
-    font-size: 10px;
-
-    letter-spacing: 0.15em;
+    width: 100%;
 
     overflow: hidden;
 
-    position: relative;
+    cursor: pointer;
 
+    background: #111;
+
+    border:
+        1px solid rgba(255,255,255,0.1);
+
+    box-shadow:
+        0 25px 80px
+        rgba(0,0,0,0.35);
+
+    perspective: 1600px;
 }
 
-.project-visual::before {
 
+.sheet-cover img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    transform-origin:
+        top right;
+
+    transition:
+        transform 0.5s
+        cubic-bezier(.2,.7,.2,1),
+        filter 0.4s ease,
+        opacity 0.4s ease;
+}
+
+
+/* =========================================
+   PAGE CORNER — BOTTOM RIGHT
+========================================= */
+
+.page-corner {
+    position: absolute;
+
+    right: 0;
+    bottom: 0;
+
+    width: 0;
+    height: 0;
+
+    z-index: 10;
+
+    pointer-events: none;
+
+    transition:
+        width 0.35s ease,
+        height 0.35s ease;
+}
+
+
+.page-corner::before {
     content: "";
 
     position: absolute;
 
-    width: 45%;
+    right: 0;
+    bottom: 0;
 
-    height: 70%;
-
-    border-radius: 50%;
+    width: 100%;
+    height: 100%;
 
     background:
-        rgba(93,214,208,0.08);
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.95) 0%,
+            rgba(210,210,210,0.92) 48%,
+            rgba(95,95,95,0.9) 50%,
+            rgba(20,20,20,0.4) 100%
+        );
 
-    filter: blur(30px);
+    clip-path:
+        polygon(
+            100% 0,
+            100% 100%,
+            0 100%
+        );
 
+    filter:
+        drop-shadow(
+            -10px -8px 12px
+            rgba(0,0,0,0.45)
+        );
 }
 
-.project-visual-02::before {
+
+.page-corner::after {
+    content: "";
+
+    position: absolute;
+
+    right: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 100%;
 
     background:
-        rgba(240,202,98,0.09);
+        rgba(0,0,0,0.45);
 
+    clip-path:
+        polygon(
+            0 100%,
+            100% 0,
+            100% 100%
+        );
+
+    transform:
+        translate(
+            -10px,
+            -10px
+        );
+
+    z-index: -1;
 }
 
-.project-visual-03::before {
 
-    background:
-        rgba(93,214,208,0.12);
-
+.sheet-cover:hover
+.page-corner {
+    width: 90px;
+    height: 90px;
 }
 
-.project-visual-04::before {
 
-    background:
-        rgba(255,255,255,0.08);
+.sheet-cover:hover img {
+    transform: none;
+    filter: none;
+}
 
+/* =========================================
+   HOVER LABEL
+========================================= */
+
+.cover-hover-label {
+    position: absolute;
+
+    right: 28px;
+    bottom: 24px;
+
+    z-index: 10;
+
+    font-size: 9px;
+
+    letter-spacing: 0.12em;
+
+    color: var(--white);
+
+    opacity: 0;
+
+    transform:
+        translateY(5px);
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+.sheet-cover:hover
+.cover-hover-label {
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+
+
+/* =========================================
+   TURN ANIMATION
+========================================= */
+
+.portfolio-sheet.turning
+.sheet-cover img {
+    transform:
+        perspective(1600px)
+        rotateY(-22deg)
+        translateX(-5%);
+
+    opacity: 0;
+
+    filter:
+        brightness(0.5);
+}
+
+
+
+/* =========================================
+   PROJECT CONTROL
+========================================= */
+
+.project-deck-control {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding-top: 25px;
+
+    border-top:
+        1px solid var(--border);
+
+    font-size: 9px;
+
+    letter-spacing: 0.12em;
+
+    color: #666;
+}
+
+
+.deck-current {
+    color: var(--cyan);
+}
+
+
+.deck-divider {
+    color: #444;
+}
+
+
+.deck-total {
+    color: #666;
+}
+
+
+
+/* arrows */
+
+.deck-arrow {
+    appearance: none;
+
+    background: none;
+
+    border: none;
+
+    padding: 0;
+
+    color: #666;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.deck-arrow:hover {
+    color: var(--cyan);
+}
+
+
+.deck-prev:hover {
+    transform:
+        translateX(-3px);
+}
+
+
+.deck-next-button:hover {
+    transform:
+        translateX(3px);
+}
+
+
+
+/* instruction */
+
+.deck-instruction {
+    margin-left: auto;
+
+    color: #555;
+
+    font-size: 8px;
+
+    letter-spacing: 0.14em;
 }
 
 
@@ -1316,7 +2537,9 @@ main {
     color: #aaa;
 
 }
-
+.section-kicker {
+    margin-bottom: 24px;
+}
 
 /* =========================================
    CONTACT
@@ -1660,4 +2883,183 @@ footer {
 
     }
 
+}
+.contact-methods {
+    display: flex;
+
+    align-items: flex-end;
+
+    gap: 70px;
+
+    margin-top: 60px;
+}
+
+
+.contact-email {
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-start;
+}
+
+
+.contact-wechat {
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-start;
+}
+
+
+.contact-label {
+    font-size: 9px;
+
+    letter-spacing: 0.12em;
+
+    color: #555;
+
+    margin-bottom: 12px;
+}
+
+
+.contact-methods .email {
+    margin-top: 0;
+}
+
+
+.wechat-qr {
+    width: 72px;
+    height: 72px;
+
+    padding: 6px;
+
+    background: #fff;
+
+    overflow: hidden;
+}
+
+
+.wechat-qr img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+}
+
+
+.wechat-note {
+    margin-top: 10px;
+
+    font-size: 10px;
+
+    color: #666;
+}
+.contact-content .lang-cn h2 {
+    line-height: 1.15;
+    letter-spacing: 0.02em;
+
+    font-family:
+        "PingFang SC",
+        "Microsoft YaHei",
+        sans-serif;
+}
+/* =========================================
+   CONTACT PHOTO COLLAGE
+========================================= */
+
+.contact-content {
+    position: relative;
+    min-height: 650px;
+
+    isolation: isolate;
+    z-index: 0;
+}
+
+
+/* 文字层 */
+
+.contact-left {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* 图片整体放到文字后面 */
+
+.contact-gallery {
+    position: absolute;
+
+    top: 40px;
+    left: 0;
+
+    width: 100%;
+    height: 620px;
+
+    z-index: -1;
+
+    pointer-events: none;
+}
+
+
+/* 三张图片 */
+
+.contact-photo {
+    position: absolute;
+
+    display: block;
+
+    object-fit: cover;
+
+    aspect-ratio: 3 / 4;
+
+    filter:
+        grayscale(100%)
+        brightness(0.38);
+
+    opacity: 0.8;
+
+    border: none;
+
+    box-shadow: none;
+}
+
+
+/* 图 1：主要压在标题后面 */
+
+.contact-photo-1 {
+    width: 29%;
+
+    left: 18%;
+    top: 30%;
+
+    transform:
+        rotate(-3deg);
+}
+
+
+/* 图 2 */
+
+.contact-photo-2 {
+    width: 25%;
+
+    left: 52%;
+    top: 40%;
+
+    transform:
+        rotate(3deg);
+}
+
+
+/* 图 3 */
+
+.contact-photo-3 {
+    width: 23%;
+
+    right: 2%;
+    top: 60%;
+
+    transform:
+        rotate(-2deg);
 }
